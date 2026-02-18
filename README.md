@@ -1,5 +1,9 @@
 # mcp-config-sync
 
+<p align="center">
+  <img src="mcp-config-sync.png" alt="mcp-config-sync logo — cat on server stack" width="280">
+</p>
+
 **Keyring-secured** CLI for **MCP (Model Context Protocol)** config: one master list, sync to Claude Desktop, Cursor, VS Code, and Windsurf. API keys live in the system keychain, not in config files.
 
 ## Features
