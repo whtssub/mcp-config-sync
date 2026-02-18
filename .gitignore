@@ -196,6 +196,7 @@ cython_debug/
 
 # mcp-config-sync local dev config (when using MCP_CONFIG_SYNC_CONFIG_DIR)
 .mcp-config-sync-config/
+.mcp-sync-config/
 
 # plan file
 plan.md
