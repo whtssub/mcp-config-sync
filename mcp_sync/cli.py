@@ -3,6 +3,7 @@
 import typer
 from rich.console import Console
 
+from mcp_sync import __version__
 from mcp_sync.config import init_master_config, load_master_config
 from mcp_sync.keyring_util import delete_all_keys_for_server, set_key
 from mcp_sync.manager import parse_args_string
@@ -14,6 +15,12 @@ app = typer.Typer(
 console = Console()
 
 
+def _version_callback(value: bool) -> None:
+    if value:
+        console.print(f"mcp-config-sync [bold]{__version__}[/bold]")
+        raise typer.Exit(0)
+
+
 def _ensure_init() -> None:
     from mcp_sync.paths import get_master_config_path
     if not get_master_config_path().exists():
@@ -22,7 +29,10 @@ def _ensure_init() -> None:
 
 
 @app.callback(invoke_without_command=True)
-def main(ctx: typer.Context) -> None:
+def main(
+    ctx: typer.Context,
+    version: bool = typer.Option(False, "--version", "-V", help="Show version and exit", callback=_version_callback, is_eager=True),
+) -> None:
     if ctx.invoked_subcommand is None:
         console.print("[dim]Run [bold]mcp-config-sync --help[/bold] for commands.[/dim]")
         raise typer.Exit(0)

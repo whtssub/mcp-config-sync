@@ -1,12 +1,12 @@
 """CLI tests using Typer CliRunner with isolated config dir."""
 
-import os
 from pathlib import Path
 
 import pytest
 from typer.testing import CliRunner
 
 from mcp_sync.cli import app
+from mcp_sync.paths import get_master_config_path
 
 runner = CliRunner()
 
@@ -24,10 +24,18 @@ def test_cli_help(isolated_config: None) -> None:
     assert "sync" in r.output
 
 
-def test_init_creates_master_json(tmp_path: Path) -> None:
+def test_cli_version(isolated_config: None) -> None:
+    r = runner.invoke(app, ["--version"])
+    assert r.exit_code == 0
+    assert "mcp-config-sync" in r.output
+    assert "0.1.0" in r.output
+
+
+def test_init_creates_master_json() -> None:
+    """Init creates master.json in the dir given by MCP_CONFIG_SYNC_CONFIG_DIR (set by isolated_config)."""
     r = runner.invoke(app, ["init"])
     assert r.exit_code == 0
-    assert (tmp_path / "master.json").exists()
+    assert get_master_config_path().exists()
 
 
 def test_list_without_init_fails() -> None:
