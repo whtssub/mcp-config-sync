@@ -26,10 +26,10 @@ classifiers = [
     "Topic :: Utilities",
 ]
 [project.urls]
-Homepage = "https://github.com/whtssub/mcp-sync"
-Repository = "https://github.com/whtssub/mcp-sync"
-Issues = "https://github.com/whtssub/mcp-sync/issues"
-Documentation = "https://github.com/whtssub/mcp-sync#readme"
+Homepage = "https://github.com/whtssub/mcp-config-sync"
+Repository = "https://github.com/whtssub/mcp-config-sync"
+Issues = "https://github.com/whtssub/mcp-config-sync/issues"
+Documentation = "https://github.com/whtssub/mcp-config-sync#readme"
 
 [project.optional-dependencies]
 dev = [
