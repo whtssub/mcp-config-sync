@@ -1,7 +1,7 @@
 # mcp-config-sync
 
 <p align="center">
-  <img src="mcp-config-sync.png" alt="mcp-config-sync logo — cat on server stack" width="280">
+  <img src="https://raw.githubusercontent.com/whtssub/mcp-sync/main/mcp-config-sync.png" alt="mcp-config-sync logo — cat on server stack" width="280">
 </p>
 
 **Keyring-secured** CLI for **MCP (Model Context Protocol)** config: one master list, sync to Claude Desktop, Cursor, VS Code, and Windsurf. API keys live in the system keychain, not in config files.
@@ -18,11 +18,14 @@
 ## Install
 
 ```bash
-# With uv
+# From PyPI (recommended)
+pip install mcp-config-sync
+
+# Or with uv
 uv tool install mcp-config-sync
 
-# Or from source
-cd mcp-config-sync && uv sync && uv run mcp-config-sync --help
+# From source
+cd mcp-sync && uv sync && uv run mcp-config-sync --help
 ```
 
 ## Quick start
@@ -57,6 +60,8 @@ mcp-config-sync sync
 uv sync --extra dev
 uv run pytest
 ```
+
+To build and publish to PyPI, see [PUBLISHING.md](PUBLISHING.md).
 
 ---
 

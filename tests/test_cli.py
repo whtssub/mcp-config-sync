@@ -24,6 +24,13 @@ def test_cli_help(isolated_config: None) -> None:
     assert "sync" in r.output
 
 
+def test_cli_version(isolated_config: None) -> None:
+    r = runner.invoke(app, ["--version"])
+    assert r.exit_code == 0
+    assert "mcp-config-sync" in r.output
+    assert "0.1.0" in r.output
+
+
 def test_init_creates_master_json(tmp_path: Path) -> None:
     r = runner.invoke(app, ["init"])
     assert r.exit_code == 0
